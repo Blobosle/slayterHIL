@@ -25,4 +25,9 @@ class Simulation {
         // Constructors
         Simulation() : delta_t(0.01), t(0.0), wind(Eigen::Vector3d::Zero()), gravity(Eigen::Vector3d(0, 0, -9.81)) {}
 
+        double getDeltaTime() const { return delta_t; }
+        double getTime() const { return t; }
+        Eigen::Vector3d getWind() const { return wind; }
+        Eigen::Vector3d getGravity() const { return gravity; }
+
 };
