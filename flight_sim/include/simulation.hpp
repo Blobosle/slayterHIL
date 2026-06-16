@@ -30,4 +30,9 @@ class Simulation {
         Eigen::Vector3d getWind() const { return wind; }
         Eigen::Vector3d getGravity() const { return gravity; }
 
+        void setDeltaTime(double dt) { delta_t = dt; }
+        void setWind(const Eigen::Vector3d& windVelocity) { wind = windVelocity; }
+        void setGravity(const Eigen::Vector3d& gravityVector) { gravity = gravityVector; }
+        void advance() { t += delta_t; }
+
 };
