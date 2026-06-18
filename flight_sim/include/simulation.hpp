@@ -36,5 +36,8 @@ class Simulation {
         void advance() { t += delta_t; }
         Eigen::Vector3d gravityForceFor(const PhysicsBody& body) const { return gravity * body.getMass(); }
         void applyGravity(PhysicsBody& body) const { body.applyForce(gravityForceFor(body)); }
+        Eigen::Vector3d relativeWindFor(const PhysicsBody& body) const { return wind - body.getVelocity(); }
+        Eigen::Vector3d windDragForceFor(const PhysicsBody& body, double dragCoefficient) const { return dragCoefficient * relativeWindFor(body); }
+        void applyWindDrag(PhysicsBody& body, double dragCoefficient) const { body.applyForce(windDragForceFor(body, dragCoefficient)); }
 
 };
