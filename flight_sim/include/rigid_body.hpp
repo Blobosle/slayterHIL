@@ -21,6 +21,7 @@ public:
               const Eigen::Quaterniond& initOri = Eigen::Quaterniond::Identity());
 
     void applyForce(const Eigen::Vector3d& force) override;
+    void applyImpulse(const Eigen::Vector3d& impulse);
     void applyTorque(const Eigen::Vector3d& torque);
     void clearAccumulators();
     void update(double dt) override;

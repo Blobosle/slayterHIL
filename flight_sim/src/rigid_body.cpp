@@ -25,6 +25,13 @@ void RigidBody::applyForce(const Eigen::Vector3d &force) {
   total_force += force; // world frame
 }
 
+void RigidBody::applyImpulse(const Eigen::Vector3d &impulse) {
+  if (mass <= 0.0)
+    return;
+
+  velocity += impulse / mass;
+}
+
 void RigidBody::applyTorque(const Eigen::Vector3d &torque) {
   total_torque_body += torque; // body frame
 }
