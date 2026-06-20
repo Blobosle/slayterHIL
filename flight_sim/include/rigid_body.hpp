@@ -29,6 +29,7 @@ public:
     Eigen::Vector3d getPosition() const;
     Eigen::Vector3d getVelocity() const;
     Eigen::Vector3d getAngularVelocity() const { return angularVelocity; }
+    double getKineticEnergy() const;
     void setAngularVelocity(const Eigen::Vector3d& w) { angularVelocity = w; }
     void setAccelerationWorld(const Eigen::Vector3d& a) { acceleration = a; }
 

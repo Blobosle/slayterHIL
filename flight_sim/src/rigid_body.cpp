@@ -40,6 +40,13 @@ Eigen::Vector3d RigidBody::getPosition() const { return position; }
 
 Eigen::Vector3d RigidBody::getVelocity() const { return velocity; }
 
+double RigidBody::getKineticEnergy() const {
+  const double linearEnergy = 0.5 * mass * velocity.squaredNorm();
+  const double angularEnergy =
+      0.5 * angularVelocity.dot(inertiaBody * angularVelocity);
+  return linearEnergy + angularEnergy;
+}
+
 void RigidBody::clearAccumulators() {
   total_force.setZero();
   total_torque_body.setZero();
