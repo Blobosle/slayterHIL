@@ -1,5 +1,7 @@
 #include <flight_sim.hpp>
 
+#include <cmath>
+
 RigidBody::RigidBody()
     : PhysicsBody(1.0,                           // mass
                   Eigen::Vector3d::Zero(),       // position
@@ -155,9 +157,9 @@ bool RigidBody::isColliding(RigidBody *col_body) {
   double bound_sum_z = this->getZBound() + col_body->getZBound();
 
   // Distances between this and col_body
-  double x_dist = this->position[0] - col_body->position[0];
-  double y_dist = this->position[1] - col_body->position[1];
-  double z_dist = this->position[2] - col_body->position[2];
+  double x_dist = std::abs(this->position[0] - col_body->position[0]);
+  double y_dist = std::abs(this->position[1] - col_body->position[1]);
+  double z_dist = std::abs(this->position[2] - col_body->position[2]);
 
   // If the distance between the bodies' positions are less than or equal to the
   // sum of their bounds, return true Otherwise, return false
