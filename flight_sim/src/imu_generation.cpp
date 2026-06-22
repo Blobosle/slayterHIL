@@ -1,8 +1,12 @@
 #include <flight_sim.hpp>
 
-ImuSimulator::ImuSimulator() : m_(0.0), I_(0.0) {}
+ImuSimulator::ImuSimulator()
+    : m_(0.0), I_(0.0), wx_(0.0), wy_(0.0), wz_(0.0), roll_(0.0),
+      pitch_(0.0), yaw_(0.0) {}
 
-ImuSimulator::ImuSimulator(float m, float moi) : m_(m), I_(moi) {}
+ImuSimulator::ImuSimulator(float m, float moi)
+    : m_(m), I_(moi), wx_(0.0), wy_(0.0), wz_(0.0), roll_(0.0),
+      pitch_(0.0), yaw_(0.0) {}
 
 i2c_imu_data_16_t ImuSimulator::pack_16(int16_t value) {
   i2c_imu_data_16_t result;
