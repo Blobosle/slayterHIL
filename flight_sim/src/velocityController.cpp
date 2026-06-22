@@ -16,6 +16,9 @@ Eigen::Vector3d
 velocityController::compute(const Eigen::Vector3d &currentVelocity,
                             const Eigen::Vector3d &targetVelocity, double dt) {
   velocityError = targetVelocity - currentVelocity;
+  if (dt <= 0.0) {
+    return Eigen::Vector3d::Zero();
+  }
 
   Eigen::Vector3d pTerm = kp.cwiseProduct(velocityError);
   Eigen::Vector3d dTerm = kd.cwiseProduct((velocityError - previousError) / dt);
