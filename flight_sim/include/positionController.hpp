@@ -13,6 +13,7 @@ public:
     void setTarget(const Eigen::Vector3d& target);
     void setMaxVelocity(double maxVelocity);
     Eigen::Vector3d getTarget();
+    Eigen::Vector3d getPositionError(const Eigen::Vector3d& currentPos) const;
 
     Eigen::Vector3d kp;
     Eigen::Vector3d desiredPos;

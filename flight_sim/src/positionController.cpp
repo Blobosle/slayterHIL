@@ -24,8 +24,12 @@ Eigen::Vector3d positionController::getTarget() {
     return desiredPos;
 }
 
+Eigen::Vector3d positionController::getPositionError(const Eigen::Vector3d& currentPos) const {
+    return desiredPos - currentPos;
+}
+
 Eigen::Vector3d positionController::compute(const Eigen::Vector3d& currentPos, double dt) {
-    Eigen::Vector3d pos_error = desiredPos - currentPos;
+    Eigen::Vector3d pos_error = getPositionError(currentPos);
     Eigen::Vector3d targetVelocity = kp.cwiseProduct(pos_error);
     if (maxVelocity > 0.0 && targetVelocity.norm() > maxVelocity) {
         targetVelocity = targetVelocity.normalized() * maxVelocity;
